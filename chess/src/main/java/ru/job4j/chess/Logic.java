@@ -7,9 +7,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 /**
- * //TODO add comments.
- *
- * @author Petr Arsentev (parsentev@yandex.ru)
+ * @author Dmitriy Koliaskin (Hipf02@yandex.ru)
  * @version $Id$
  * @since 0.1
  */
