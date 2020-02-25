@@ -4,7 +4,7 @@ import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 
 import java.util.Arrays;
-import java.util.Optional;
+
 
 /**
  * @author Dmitriy Koliaskin (Hipf02@yandex.ru)
@@ -24,12 +24,27 @@ public class Logic {
         int index = this.findBy(source);
         if (index != -1) {
             Cell[] steps = this.figures[index].way(source, dest);
-            if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
-                rst = true;
-                this.figures[index] = this.figures[index].copy(dest);
+            for (Cell step : steps) {
+                if (this.findBy(step) != -1) {
+                    rst = false;
+                } else if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
+                    rst = true;
+                    this.figures[index] = this.figures[index].copy(dest);
+                }
             }
         }
         return rst;
+    }
+
+    public boolean isFree(Cell ... cells) {
+        boolean result = cells.length > 0;
+        for (Cell cell : cells) {
+            if (this.findBy(cell) != -1) {
+                result = false;
+                break;
+            }
+        }
+        return result;
     }
 
     public void clean() {
