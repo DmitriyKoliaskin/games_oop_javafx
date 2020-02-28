@@ -20,6 +20,15 @@ public class BishopBlack implements Figure {
         return this.position;
     }
 
+    public static Cell findBy(int startX, int startY) {
+        for (Cell cell : Cell.values()) {
+            if (cell.x == startX && cell.y == startY) {
+                return cell;
+            }
+        }
+        return null;
+    }
+
     @Override
     public Cell[] way(Cell source, Cell dest) {
         if (!isDiagonal(source, dest)) {
@@ -36,12 +45,7 @@ public class BishopBlack implements Figure {
         for (int index = 0; index < size; index++) {
             startX += deltaX;
             startY += deltaY;
-            for (Cell cell : Cell.values()) {
-                if (cell.x == startX && cell.y == startY) {
-                    steps[index] = cell;
-                    break;
-                }
-            }
+                    steps[index] = findBy(startX, startY);
         }
         return steps;
     }

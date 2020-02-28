@@ -47,9 +47,7 @@ public class Logic {
     }
 
     public void clean() {
-        for (int position = 0; position != this.figures.length; position++) {
-            this.figures[position] = null;
-        }
+        Arrays.fill(this.figures, null);
         this.index = 0;
     }
 
