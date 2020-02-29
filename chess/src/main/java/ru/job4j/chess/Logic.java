@@ -27,7 +27,7 @@ public class Logic {
                 if (this.isFree(steps)) {
                     rst = true;
                 }
-            if (steps.length > 0 && steps[steps.length - 1].equals(dest) && !rst) {
+            if (steps.length > 0 && steps[steps.length - 1].equals(dest) && rst) {
                 rst = true;
                 this.figures[index] = this.figures[index].copy(dest);
             }
